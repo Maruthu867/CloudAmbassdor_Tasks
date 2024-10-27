@@ -1,1 +1,61 @@
+Task 2 Set Up a Virtualized Environment Using Docker
+
+Link: http://43.204.142.216/
+
+1. Create an AWS EC2 Instance with an Ubuntu server 
+2.whte Creating the Server 
+   Security Group: Set up a security group allowing:
+   HTTP (port 80): for accessing the web server.
+   SSH (port 22): for connecting to the instance
+
+3.Add this Script in the User data section 
+#!/bin/bash/
+yum -y update
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+
+4. Log into the machine switch to root user 
+    apt install docker.io
+    service docker start
+    usermod -aG docker "username"
+
+5. To verify the Docker
+    Docker --version
+6. Set Up the Project Directory and Files
+    mkdir nginx-docker-setup
+    cd nginx-docker-setup
+7. Create a Dockerfile: Create a Dockerfile in the project directory that defines the environment, the base image, and how to run the Nginx server.
+
+Dockerfile
+
+FROM nginx:latest
+
+COPY ./index.html /usr/share/nginx/html/index.html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+
+8. Create a Simple HTML File: Add an index.html file to the project directory. This file will serve as the homepage.
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Nginx Docker</title>
+</head>
+<body>
+    <h1>Hello from Dockerized Nginx Server!</h1>
+</body>
+</html>
+9.Build and Run the Docker Container
+Build the Docker Image:
+   docker build -t nginx-server .
+10. Run the Docker Container:
+    docker run -d -p 80:80 nginx-server
+ Access Your Nginx Web Server
+Visit the Public IP of Your EC2 Instance:
+Open a browser and go to http://our public IP
+
+you will receive a msg from the ngix server.
 
