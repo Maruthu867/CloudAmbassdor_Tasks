@@ -1,4 +1,7 @@
-<h1>Task Name : 1. Deploy a Simple Web Application</h1>
+Task Name : 1. Deploy a Simple Web Application
+
+link : http://3.110.88.194/
+Server Name: APP_server
 
 For this Task First we need to create a Ec2 machine.
 
@@ -11,6 +14,12 @@ while creating the EC2 instance:-
      systemctl start httpd
      systemctl enable httpd 
 to enable the website acces via browser
-  3. Create an S3 Bucket and add the website Files into the Bucket
+  3. Create an S3 Bucket and add the website Files (object) into the Bucket.
+  4. Then log into the EC2 instance switch into root user 
+  5. Move to this path cd /var/www/html
+  6. Copy the files from the S3 bucket to here ( Before this Create an suitable IAM Role to Acces the S3 Bucket and attach it to the EC2 instance).
+  7. use this cmd to copy the file from S3 bucket : aws s3 cp -- recursive .
+  8. After this Copy the Public Ip of the Machine and paste it in the browser to see the Out put
+  
      
 
