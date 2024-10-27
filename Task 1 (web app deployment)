@@ -1,3 +1,16 @@
-Task Name : 1. Deploy a Simple Web Application
+<h1>Task Name : 1. Deploy a Simple Web Application</h1>
 
+For this Task First we need to create a Ec2 machine.
+
+while creating the EC2 instance:-
+  1. Need to Create rules to allow http and ssh port (443, 22) 
+  2. Add the Script in the User data:-
+     #!bin/bash
+     yum update -y
+     yum install -y httpd
+     systemctl start httpd
+     systemctl enable httpd 
+to enable the website acces via browser
+  3. Create an S3 Bucket and add the website Files into the Bucket
+     
 
